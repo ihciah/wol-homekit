@@ -1,0 +1,18 @@
+[package]
+name = "wol"
+version = "0.1.0"
+edition = "2021"
+
+authors = ["ihciah <ihciah@gmail.com>"]
+description = "WOL with HomeKit"
+license = "MIT/Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/ihciah/wol-homekit"
+
+[dependencies]
+hap = { git = "https://github.com/ewilken/hap-rs" }
+
+log = "0.4"
+env_logger = "0.10"
+libc = "0.2"
+tokio = { version = "1", features = ["full"] }
