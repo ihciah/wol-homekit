@@ -7,7 +7,7 @@ const PIN: &[u8; 8] = &[1, 4, 7, 7, 4, 1, 4, 7];
 
 #[tokio::main]
 async fn main() {
-    env_logger::init();
+    tracing_subscriber::fmt::init();
 
     let info = AccessoryInformation {
         name: "WOL".into(),
@@ -19,7 +19,6 @@ async fn main() {
     let accessory = Accessory::new(info, storage, PIN, TARGET_MAC, Some(INTERFACE.into()))
         .await
         .unwrap();
-
-    log::info!("WOL started");
+    tracing::info!("WOL started");
     accessory.run_handle().await.unwrap();
 }

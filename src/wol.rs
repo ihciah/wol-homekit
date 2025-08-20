@@ -14,7 +14,7 @@ impl MagicPacket {
     pub const fn new(mac_address: &[u8; 6], interface: Option<String>) -> MagicPacket {
         let mut magic_bytes: [[u8; 6]; 17] = [*mac_address; 17];
         magic_bytes[0] = [0xFF; 6];
-        let magic_bytes = unsafe { transmute(magic_bytes) };
+        let magic_bytes = unsafe { transmute::<[[u8; 6]; 17], [u8; 102]>(magic_bytes) };
         MagicPacket {
             magic_bytes,
             interface,

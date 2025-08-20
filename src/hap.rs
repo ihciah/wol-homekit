@@ -45,7 +45,7 @@ impl DelaySwitch {
         inner.last = Some(Instant::now());
         for _ in 0..3 {
             if let Err(e) = inner.packet.send() {
-                log::error!("send wol packet fail: {e}");
+                tracing::error!("send wol packet fail: {e}");
             }
         }
     }
